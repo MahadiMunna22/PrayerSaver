@@ -93,10 +93,55 @@ Run `PrayerSaver.scr` without arguments to open `%AppData%\PrayerSaver\config.js
 
 ## Troubleshooting
 
-- **Never starts from idle:** run `powercfg /requests` as admin. A process holding a `DISPLAY` or `SYSTEM` request (e.g. Intel `ipf_helper.exe`) blocks idle detection.
-- **Screen turns off first:** set **Screen off** longer than the screensaver **Wait** in Power settings.
-- **Nothing appears:** run `PrayerSaver.scr /s` in a terminal and confirm the .NET Desktop Runtime is installed.
-- **`NETSDK1136`:** the target framework must end in `-windows`.
+### The screensaver never starts, or the screen goes blank
+
+Two settings fixed this on my laptop. Check both.
+
+**1. Make sure the screen does not turn off first**
+
+If Windows turns the display off before the screensaver's **Wait** time, you only see a blank screen.
+
+1. Open **Settings > System > Power & battery > Screen and sleep**.
+2. Set **Screen off** to **Never** (or longer than the screensaver **Wait**) for both **On battery** and **Plugged in**.
+3. Optional: in **Control Panel > Power Options > Change plan settings > Change advanced power settings**, set **Display > Turn off display after** to `0` (never) for both modes.
+
+**2. Check what blocks idle detection**
+
+Run this in an **admin** terminal:
+
+```cmd
+powercfg /requests
+```
+
+If a process is listed under `DISPLAY` or `SYSTEM`, Windows does not treat the PC as idle, so no screensaver starts. On my machine it was Intel's `ipf_helper.exe` (Intel Innovation Platform Framework). The service is named `ipfsvc`. You can confirm yours with:
+
+```cmd
+powershell -Command "Get-CimInstance Win32_Service | Where-Object { $_.DisplayName -like '*Innovation*' } | Select-Object Name, DisplayName, State"
+```
+
+Stop and disable it (run each command on its own line, and keep the space after `start=`):
+
+```cmd
+sc stop ipfsvc
+sc config ipfsvc start= disabled
+```
+
+Then run `powercfg /requests` again. `DISPLAY` and `SYSTEM` should show `None`.
+
+`Intel(R) Innovation Platform Framework` is the display name, which `sc` does not accept; use the service name `ipfsvc`.
+
+> **Note:** This service may handle thermal or fan management on some laptops. Keep an eye on temperatures, and re-enable it if needed:
+> ```cmd
+> sc config ipfsvc start= auto
+> sc start ipfsvc
+> ```
+> Updating the Intel Innovation Platform Framework driver from your laptop maker may fix the issue without disabling the service.
+
+### Other issues
+
+- **Test the screensaver on its own:** run `PrayerSaver.scr /s` in a terminal. If it works there but not from idle, the problem is in the two steps above, not in PrayerSaver. Do not lock the PC with `Win + L` while testing.
+- **Nothing appears:** confirm the .NET Desktop Runtime is installed.
+- **Build error `NETSDK1136`:** the target framework must end in `-windows`.
 
 ## Contributing
 
