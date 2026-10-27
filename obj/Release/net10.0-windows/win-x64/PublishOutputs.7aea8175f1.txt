@@ -1,0 +1,2 @@
+/Users/mahadi_mini/Documents/Github/PrayerSaver/bin/Release/net10.0-windows/win-x64/publish/PrayerSaver.pdb
+/Users/mahadi_mini/Documents/Github/PrayerSaver/bin/Release/net10.0-windows/win-x64/publish/PrayerSaver.exe

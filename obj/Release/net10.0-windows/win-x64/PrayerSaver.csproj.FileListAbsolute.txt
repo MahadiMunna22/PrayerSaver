@@ -1,0 +1,14 @@
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/PrayerSaver.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/PrayerSaver.AssemblyInfoInputs.cache
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/PrayerSaver.AssemblyInfo.cs
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/PrayerSaver.csproj.CoreCompileInputs.cache
+/Users/mahadi_mini/Documents/Github/PrayerSaver/bin/Release/net10.0-windows/win-x64/PrayerSaver.exe
+/Users/mahadi_mini/Documents/Github/PrayerSaver/bin/Release/net10.0-windows/win-x64/PrayerSaver.deps.json
+/Users/mahadi_mini/Documents/Github/PrayerSaver/bin/Release/net10.0-windows/win-x64/PrayerSaver.runtimeconfig.json
+/Users/mahadi_mini/Documents/Github/PrayerSaver/bin/Release/net10.0-windows/win-x64/PrayerSaver.dll
+/Users/mahadi_mini/Documents/Github/PrayerSaver/bin/Release/net10.0-windows/win-x64/PrayerSaver.pdb
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/PrayerSaver.dll
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/refint/PrayerSaver.dll
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/PrayerSaver.pdb
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/PrayerSaver.genruntimeconfig.cache
+/Users/mahadi_mini/Documents/Github/PrayerSaver/obj/Release/net10.0-windows/win-x64/ref/PrayerSaver.dll
