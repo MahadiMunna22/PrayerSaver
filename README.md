@@ -1,22 +1,29 @@
-<h1 align="center">PrayerSaver</h1>
+<h1 align="center">PrayerSaver: Open-Source Prayer Reminder for Windows</h1>
 
 <p align="center"><b>Never miss a prayer again.</b><br/>
-A Windows screensaver that turns idle screen time into a gentle prayer reminder.</p>
+A free, open-source Windows screensaver that shows Islamic prayer times, a live countdown ring and a "best time to pray" reminder.</p>
 
 <p align="center">
-  <img src="./screenshots/SS1.png" width="24%" alt="Screenshot 1"/>
-  <img src="./screenshots/SS2.png" width="24%" alt="Screenshot 2"/>
-  <img src="./screenshots/SS3.png" width="24%" alt="Screenshot 3"/>
-  <img src="./screenshots/SS4.png" width="24%" alt="Screenshot 4"/>
+  <img src="./screenshots/SS1.png" width="24%" alt="PrayerSaver prayer reminder screenshot 1"/>
+  <img src="./screenshots/SS2.png" width="24%" alt="PrayerSaver prayer reminder screenshot 2"/>
+  <img src="./screenshots/SS3.png" width="24%" alt="PrayerSaver prayer reminder screenshot 3"/>
+  <img src="./screenshots/SS4.png" width="24%" alt="PrayerSaver prayer reminder screenshot 4"/>
+</p>
+
+<p align="center">
+  <a href="../../releases">Download</a> ·
+  <a href="#get-started">Get started</a> ·
+  <a href="#how-it-reads-your-day">Prayer windows</a> ·
+  <a href="#troubleshooting">Troubleshooting</a>
 </p>
 
 ## Why PrayerSaver?
 
-Work, study and games make it easy to lose track of time. PrayerSaver uses the moment your PC goes idle to show you where you are in the day:
+Work, study and games make it easy to lose track of time. PrayerSaver uses the moment your PC goes idle as a gentle prayer reminder. It shows you:
 
 - **Which prayer is current**, and how long its window lasts
 - **How much of the best time is left**, so you know whether to pray now or soon
-- **A calm colour cue** from a glance: green means plenty of time, orange means do not delay, red means the window is closing
+- **A calm colour cue**: green means plenty of time, orange means do not delay, red means the window is closing
 - **What is next**, with a countdown, when you are between prayers
 
 Walk away from your desk, come back, and you already know what to do next.
@@ -25,8 +32,9 @@ Walk away from your desk, come back, and you already know what to do next.
 
 - Live progress ring with green, orange and red zones
 - Large clock and date, plus "best time" and window countdowns
-- Prayer times from the [AlAdhan API](https://aladhan.com/prayer-times-api), cached daily for offline use
+- Prayer times for your city from the [AlAdhan API](https://aladhan.com/prayer-times-api), cached daily for offline use
 - Native Windows screensaver (`.scr`) built with C# and WPF
+- Free and open source, no account or tracking
 - Exits on any key, click or larger mouse movement
 
 ## How it reads your day
@@ -43,9 +51,16 @@ Orange covers the time between green and red. Between windows the ring is grey a
 
 ## Get started
 
-**Requirements:** Windows 10/11 (x64) with the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0). Building needs the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) on Windows, macOS or Linux.
+**Requirements:** Windows 10/11 (x64) with the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0).
 
-**1. Build**
+### Option A: Download
+
+1. Get `PrayerSaver.scr` from the [Releases](../../releases) page.
+2. Continue with **Install** below.
+
+### Option B: Build from source
+
+Needs the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) on Windows, macOS or Linux.
 
 ```bash
 dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true
@@ -54,14 +69,14 @@ cp bin/Release/net10.0-windows/win-x64/publish/PrayerSaver.exe PrayerSaver.scr
 
 On Windows, use `copy` instead of `cp`. For a build with no runtime dependency, use `--self-contained true -p:IncludeNativeLibrariesForSelfExtract=true`.
 
-**2. Install**
+### Install
 
 1. Copy `PrayerSaver.scr` to a permanent folder, e.g. `C:\PrayerSaver\`.
 2. Test it: `.\PrayerSaver.scr /s`
 3. Right-click the file and choose **Install**, or pick it in **Settings > Personalization > Lock screen > Screen saver**.
 4. Set **Wait** to the idle time you want.
 
-**3. Set your city**
+### Set your city
 
 Run `PrayerSaver.scr` without arguments to open `%AppData%\PrayerSaver\config.json`:
 
@@ -83,10 +98,16 @@ Run `PrayerSaver.scr` without arguments to open `%AppData%\PrayerSaver\config.js
 - **Nothing appears:** run `PrayerSaver.scr /s` in a terminal and confirm the .NET Desktop Runtime is installed.
 - **`NETSDK1136`:** the target framework must end in `-windows`.
 
+## Contributing
+
+Issues and pull requests are welcome. Ideas: offline prayer calculation, a settings dialog, multi-monitor layout, per-prayer best-time settings in `config.json`.
+
 ## Security
 
-`.scr` files are executables. Only install ones you built or trust.
+`.scr` files are executables. Only install ones you built or downloaded from this repository's Releases.
 
 ## License
 
-Add a `LICENSE` file (e.g. MIT) and name it here.
+Released under the [MIT License](LICENSE). Add a `LICENSE` file to the repository root.
+
+<sub>Topics: prayer-times, prayer-reminder, islamic, salah, screensaver, windows, wpf, csharp, dotnet, open-source</sub>
