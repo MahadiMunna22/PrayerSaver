@@ -70,7 +70,3 @@ Run `PrayerSaver.scr` without arguments to open `%AppData%\PrayerSaver\config.js
 ## Security
 
 `.scr` files are executables. Only install ones you built or trust.
-
-## License
-
-Add a `LICENSE` file (e.g. MIT) and name it here.
