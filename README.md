@@ -3,6 +3,12 @@
 A Windows screensaver that shows Islamic prayer times as a live progress ring: current prayer, time left in its window, and a separate countdown for the best time to pray. Current time and date are shown above the ring.
 
 <!-- ![PrayerSaver screenshot](docs/screenshot.png) -->
+<p align="center">
+  <img src="./screenshots/SS1.png" width="24%" alt="Screenshot 1"/>
+  <img src="./screenshots/SS2.png" width="24%" alt="Screenshot 2"/>
+  <img src="./screenshots/SS3.png" width="24%" alt="Screenshot 3"/>
+  <img src="./screenshots/SS4.png" width="24%" alt="Screenshot 4"/>
+</p>
 
 ## Features
 
