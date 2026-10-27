@@ -1,8 +1,8 @@
-# PrayerSaver
+<h1 align="center">PrayerSaver</h1>
 
-A Windows screensaver that shows Islamic prayer times as a live progress ring: current prayer, time left in its window, and a separate countdown for the best time to pray. Current time and date are shown above the ring.
+<p align="center"><b>Never miss a prayer again.</b><br/>
+A Windows screensaver that turns idle screen time into a gentle prayer reminder.</p>
 
-<!-- ![PrayerSaver screenshot](docs/screenshot.png) -->
 <p align="center">
   <img src="./screenshots/SS1.png" width="24%" alt="Screenshot 1"/>
   <img src="./screenshots/SS2.png" width="24%" alt="Screenshot 2"/>
@@ -10,15 +10,26 @@ A Windows screensaver that shows Islamic prayer times as a live progress ring: c
   <img src="./screenshots/SS4.png" width="24%" alt="Screenshot 4"/>
 </p>
 
+## Why PrayerSaver?
+
+Work, study and games make it easy to lose track of time. PrayerSaver uses the moment your PC goes idle to show you where you are in the day:
+
+- **Which prayer is current**, and how long its window lasts
+- **How much of the best time is left**, so you know whether to pray now or soon
+- **A calm colour cue** from a glance: green means plenty of time, orange means do not delay, red means the window is closing
+- **What is next**, with a countdown, when you are between prayers
+
+Walk away from your desk, come back, and you already know what to do next.
+
 ## Features
 
+- Live progress ring with green, orange and red zones
+- Large clock and date, plus "best time" and window countdowns
+- Prayer times from the [AlAdhan API](https://aladhan.com/prayer-times-api), cached daily for offline use
 - Native Windows screensaver (`.scr`) built with C# and WPF
-- Progress ring with green (best), orange and red (last minutes) zones
-- Large clock and date, "best time" countdown and window countdown
-- Prayer times from the [AlAdhan API](https://aladhan.com/prayer-times-api), cached daily in `%AppData%` for offline use
 - Exits on any key, click or larger mouse movement
 
-## Prayer windows
+## How it reads your day
 
 | Prayer | Window | Green (best time) | Red (last minutes) |
 |---|---|---|---|
@@ -28,30 +39,29 @@ A Windows screensaver that shows Islamic prayer times as a live progress ring: c
 | Maghrib | Maghrib to Isha | First 20 min | Last 20 min |
 | Isha | Isha to Islamic midnight | Until first third of the night | Last 30 min |
 
-Orange is the time between green and red. Between windows the ring is grey and counts down to the next prayer. Values are practical defaults, not a fatwa; scholars differ. Adjust them in `Store.BuildWindows` (`Program.cs`). Always verify times with your local mosque.
+Orange covers the time between green and red. Between windows the ring is grey and counts down to the next prayer. These are practical defaults, not a fatwa, and scholars differ. Adjust them in `Store.BuildWindows` (`Program.cs`), and always verify times with your local mosque.
 
-## Requirements
+## Get started
 
-- Windows 10/11 (x64) with the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) to build (Windows, macOS or Linux)
+**Requirements:** Windows 10/11 (x64) with the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0). Building needs the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) on Windows, macOS or Linux.
 
-## Build
+**1. Build**
 
 ```bash
 dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true
 cp bin/Release/net10.0-windows/win-x64/publish/PrayerSaver.exe PrayerSaver.scr
 ```
 
-On Windows, use `copy` instead of `cp`. For a build without a runtime dependency, use `--self-contained true -p:IncludeNativeLibrariesForSelfExtract=true`.
+On Windows, use `copy` instead of `cp`. For a build with no runtime dependency, use `--self-contained true -p:IncludeNativeLibrariesForSelfExtract=true`.
 
-## Install
+**2. Install**
 
 1. Copy `PrayerSaver.scr` to a permanent folder, e.g. `C:\PrayerSaver\`.
-2. Test: `.\PrayerSaver.scr /s`
-3. Right-click the file and choose **Install**, or select it in **Settings > Personalization > Lock screen > Screen saver**.
+2. Test it: `.\PrayerSaver.scr /s`
+3. Right-click the file and choose **Install**, or pick it in **Settings > Personalization > Lock screen > Screen saver**.
 4. Set **Wait** to the idle time you want.
 
-## Configuration
+**3. Set your city**
 
 Run `PrayerSaver.scr` without arguments to open `%AppData%\PrayerSaver\config.json`:
 
@@ -61,10 +71,10 @@ Run `PrayerSaver.scr` without arguments to open `%AppData%\PrayerSaver\config.js
 
 `Method` is an [AlAdhan calculation method](https://aladhan.com/calculation-methods) ID (e.g. `2` ISNA, `3` MWL, `4` Umm al-Qura, `13` Diyanet). Keys are case-sensitive. Delete cached `*.json` files in the same folder after changing the method.
 
-## Limitations
+## Good to know
 
-- Starts after an idle timeout on the unlocked desktop; it does not replace the lock screen and will not show after `Win + L`.
-- Settings preview (`/p`) is blank; UI appears on the primary monitor only.
+- It starts after an idle timeout on the unlocked desktop. It does not replace the lock screen and will not show after `Win + L`.
+- The settings preview (`/p`) is blank, and the UI appears on the primary monitor only.
 
 ## Troubleshooting
 
@@ -76,3 +86,7 @@ Run `PrayerSaver.scr` without arguments to open `%AppData%\PrayerSaver\config.js
 ## Security
 
 `.scr` files are executables. Only install ones you built or trust.
+
+## License
+
+Add a `LICENSE` file (e.g. MIT) and name it here.
